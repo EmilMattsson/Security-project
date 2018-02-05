@@ -1,5 +1,6 @@
 'use strict'
 
+// testing
 const PiCamera = require('pi-camera');
 const myCamera = new PiCamera({
   mode: 'photo',
