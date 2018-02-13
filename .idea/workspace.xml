@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7cde33b-12db-4274-adc2-37d75c67ba9e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/models/raspicam.js" afterPath="$PROJECT_DIR$/models/raspicam.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -224,12 +224,12 @@
       <workItem from="1518113393533" duration="871000" />
       <workItem from="1518427627242" duration="1961000" />
       <workItem from="1518515335847" duration="59000" />
-      <workItem from="1518515512781" duration="543000" />
+      <workItem from="1518515512781" duration="1126000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3434000" />
+    <option name="totallyTimeSpent" value="4017000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="2578" height="1408" extended-state="6" />

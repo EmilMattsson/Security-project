@@ -23,3 +23,4 @@ var sensor = new Sensor({
 sensor.on('movement', function() {
     camera.start();
 });
+sensor.start();
