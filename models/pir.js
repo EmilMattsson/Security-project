@@ -4,7 +4,7 @@ const RaspiSensors = require('raspi-sensors')
 
 let pir = new RaspiSensors.Sensor({
   type  : 'PIR',
-  adress: 12
+  adress: 0X07
 }, "pir-sensor")
 
 pir.fetchInterval((err, data) => {
