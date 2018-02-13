@@ -14,6 +14,7 @@ var readInterval = function() { gpio.read(pir.pin, function(error, value) {
       if (pir.tripped){
           console.log('tripped!')
       } else {
+        console.log(pir.tripped);
         console.log("it's quiet... a little TOO quiet..." + value)
       }
   })
