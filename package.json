@@ -3,5 +3,8 @@
     "lodash": "4.17.5",
     "pi-pir-sensor": "0.0.3",
     "raspicam": "0.2.14"
+  },
+  "scripts": {
+    "start": "sudo node raspicam.js"
   }
 }
