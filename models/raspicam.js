@@ -6,7 +6,7 @@ var Sensor = require('pi-pir-sensor');
 //const pir = require('pir').use(7);
 
 var gpio = require('rpi-gpio')
-var pir = { pin: 12, loopTime: 1500, tripped: false, value: undefined }
+var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
 gpio.setup(pir.pin, gpio.DIR_IN, readInterval())
 function readInterval() { gpio.read(pir.pin, function(error, value) {
     // we only want to move on if something changed
