@@ -13,13 +13,13 @@ var readInterval = function() { gpio.read(pir.pin, function(error, value) {
      }
       if (pir.tripped){
           console.log('tripped!')
-        }
-   else {
-     console.log("it's quiet... a little TOO quiet...")
-   }
-  }) }
+      } else {
+        console.log("it's quiet... a little TOO quiet..." + value)
+      }
+  })
+}
   var onSetup = function(error) {
-    if (error) console.error(error) 
+    if (error) console.error(error)
     return setInterval(readInterval, pir.loopTime)
    }
   gpio.setMode(gpio.MODE_RPI)
