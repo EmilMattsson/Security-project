@@ -1,8 +1,8 @@
+'use strict'
 var http = require('http');
 var fs = require('fs');
 
 const PORT=1337; 
-
 fs.readFile('./index.html', function (err, html) {
 
     if (err) throw err;    

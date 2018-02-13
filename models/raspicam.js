@@ -2,8 +2,21 @@
 
 var RaspiCam = require('raspicam');
 var Sensor = require('pi-pir-sensor');
-
-// vf = vertical flip - flipping the camera because it's upside down for some reason
+//const tessel = require('tessel');
+//const pir = require('pir').use(7);
+var gpio = require('rpi-gpio')
+var pir = { pin: 12, loopTime: 1500, tripped: false, value: undefined }
+var readInterval = function() { gpio.read(pir.pin, function(error, value) {
+    // we only want to move on if something changed
+     if (value === pir.tripped) {
+       return pir.tripped = value if (pir.tripped) console.log('tripped!')
+   }else {
+     console.log("it's quiet... a little TOO quiet...")
+   }
+  }) }
+  var onSetup = function(error) { if (error) console.error(error) return setInterval(readInterval, pir.loopTime) }
+  gpio.setMode(gpio.MODE_RPI)
+  gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var camera;
 camera = new RaspiCam({
     mode: 'photo',
@@ -20,9 +33,12 @@ var sensor = new Sensor({
     loop: 1500
 });
 
-sensor.on('movement', function() {
-    camera.start();
-});
-
-//start sensor
-sensor.start();
+// pir.on('ready', pir => {
+//   console.log('Ready...')
+//   pir.on('movement:start', time => {
+//     console.log(`Something moved! Time ${time}`)
+//   });
+//   pir.on('movement:end', time => {
+//     console.log(`All is still. Time ${time}`);
+//   });
+// });
