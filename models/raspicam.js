@@ -13,27 +13,27 @@ function readInput() {
         console.log('The value is ' + value);
     });
 }
-var gpio = require('rpi-gpio')
-var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
-var readInterval = function() { gpio.read(pir.pin, function(error, value) {
-    // we only want to move on if something changed
-     if (value === pir.tripped) {
-       return pir.tripped = value
-     }
-      if (pir.tripped){
-          console.log('tripped!')
-      } else {
-        console.log(pir.tripped)
-        console.log("it's quiet... a little TOO quiet..." + value)
-      }
-  })
-}
-  var onSetup = function(error) {
-    if (error) console.error(error)
-    return setInterval(readInterval, pir.loopTime)
-   }
-  gpio.setMode(gpio.MODE_RPI)
-  gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
+// var gpio = require('rpi-gpio')
+// var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
+// var readInterval = function() { gpio.read(pir.pin, function(error, value) {
+//     // we only want to move on if something changed
+//      if (value === pir.tripped) {
+//        return pir.tripped = value
+//      }
+//       if (pir.tripped){
+//           console.log('tripped!')
+//       } else {
+//         console.log(pir.tripped)
+//         console.log("it's quiet... a little TOO quiet..." + value)
+//       }
+//   })
+// }
+//   var onSetup = function(error) {
+//     if (error) console.error(error)
+//     return setInterval(readInterval, pir.loopTime)
+//    }
+//   gpio.setMode(gpio.MODE_RPI)
+//   gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var camera;
 camera = new RaspiCam({
     mode: 'photo',
