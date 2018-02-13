@@ -1,4 +1,5 @@
 'use strict'
+'-lwiringPi'
 
 const RaspiSensors = require('raspi-sensors')
 
