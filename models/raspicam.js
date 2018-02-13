@@ -7,7 +7,7 @@ var Sensor = require('pi-pir-sensor');
 
 var gpio = require('rpi-gpio')
 var pir = { pin: 12, loopTime: 1500, tripped: false, value: undefined }
-gpio.setup(pir.pin, DIR_IN,function(error, value) {
+gpio.setup(pir.pin, gpio.DIR_IN,function(error, value) {
   if(error){
     console.log('Error:'+error);
   }
