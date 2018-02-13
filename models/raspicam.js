@@ -18,7 +18,10 @@ var readInterval = function() { gpio.read(pir.pin, function(error, value) {
      console.log("it's quiet... a little TOO quiet...")
    }
   }) }
-  var onSetup = function(error) { if (error) console.error(error) return setInterval(readInterval, pir.loopTime) }
+  var onSetup = function(error) {
+    if (error) console.error(error) 
+    return setInterval(readInterval, pir.loopTime)
+   }
   gpio.setMode(gpio.MODE_RPI)
   gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var camera;
