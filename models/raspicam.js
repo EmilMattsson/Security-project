@@ -16,11 +16,13 @@ camera = new RaspiCam({
 //camera.start();
 
 var sensor = new Sensor({
-    pin: 12,
+    pin: 7,
     loop: 1500
 });
 
 sensor.on('movement', function() {
     camera.start();
 });
+
+//start sensor
 sensor.start();
