@@ -16,7 +16,7 @@ camera = new RaspiCam({
 //camera.start();
 
 var sensor = new Sensor({
-    pin: 12,
+    pin: 7,
     loop: 1500
 });
 
