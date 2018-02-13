@@ -2,7 +2,7 @@
 
 var RaspiCam = require('raspicam');
 var Sensor = require('pi-pir-sensor');
-const tessel = require('tessel');
+//const tessel = require('tessel');
 const pir = require('pir').use(7);
 
 // vf = vertical flip - flipping the camera because it's upside down for some reason
