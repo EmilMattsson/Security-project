@@ -4,27 +4,36 @@ var RaspiCam = require('raspicam');
 var Sensor = require('pi-pir-sensor');
 //const tessel = require('tessel');
 //const pir = require('pir').use(7);
-var gpio = require('rpi-gpio')
-var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
-var readInterval = function() { gpio.read(pir.pin, function(error, value) {
-    // we only want to move on if something changed
-     if (value === pir.tripped) {
-       return pir.tripped = value
-     }
-      if (pir.tripped){
-          console.log('tripped!')
-      } else {
-        console.log(pir.tripped);
-        console.log("it's quiet... a little TOO quiet..." + value)
-      }
-  })
+var gpio = require('rpi-gpio');
+
+gpio.setup(12, gpio.DIR_IN, readInput);
+
+function readInput() {
+    gpio.read(12, function(err, value) {
+        console.log('The value is ' + value);
+    });
 }
-  var onSetup = function(error) {
-    if (error) console.error(error)
-    return setInterval(readInterval, pir.loopTime)
-   }
-  gpio.setMode(gpio.MODE_RPI)
-  gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
+// var gpio = require('rpi-gpio')
+// var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
+// var readInterval = function() { gpio.read(pir.pin, function(error, value) {
+//     // we only want to move on if something changed
+//      if (value === pir.tripped) {
+//        return pir.tripped = value
+//      }
+//       if (pir.tripped){
+//           console.log('tripped!')
+//       } else {
+//         console.log(pir.tripped);
+//         console.log("it's quiet... a little TOO quiet..." + value)
+//       }
+//   })
+// }
+//   var onSetup = function(error) {
+//     if (error) console.error(error)
+//     return setInterval(readInterval, pir.loopTime)
+//    }
+//   gpio.setMode(gpio.MODE_RPI)
+//   gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var camera;
 camera = new RaspiCam({
     mode: 'photo',
