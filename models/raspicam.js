@@ -9,8 +9,12 @@ var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
 var readInterval = function() { gpio.read(pir.pin, function(error, value) {
     // we only want to move on if something changed
      if (value === pir.tripped) {
-       return pir.tripped = value if (pir.tripped) console.log('tripped!')
-   }else {
+       return pir.tripped = value
+     }
+      if (pir.tripped){
+          console.log('tripped!')
+        }
+   else {
      console.log("it's quiet... a little TOO quiet...")
    }
   }) }
