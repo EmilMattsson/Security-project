@@ -22,10 +22,9 @@ var readInterval = function() { gpio.read(pir.pin, function(error, value) {
   gpio.setMode(gpio.MODE_RPI)
   gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var camera;
-var tmp = 0;
 camera = new RaspiCam({
     mode: 'photo',
-    output: '/home/emil/Security-project/'+tmp+'test.jpg',
+    output: '/home/emil/Security-project/test.jpg',
     vf: true,
     // exposure: 'night',
     w: 1920,
@@ -33,18 +32,10 @@ camera = new RaspiCam({
 });
 //camera.start();
 
-// var sensor = new Sensor({
-//     pin: 7,
-//     loop: 1500
-// });
-//
-// sensor.on('movement', function() {
-//     camera.start();
-//     tmp = tmp + 1;
-// });
-//
-// //start sensor
-// sensor.start();
+var sensor = new Sensor({
+    pin: 7,
+    loop: 1500
+});
 
 // pir.on('ready', pir => {
 //   console.log('Ready...')
