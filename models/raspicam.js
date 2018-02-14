@@ -17,14 +17,21 @@ let pir = new RaspiSensors.Sensor({
   type  : 'PIR',
   pin: 7
 }, "pir-sensor")
-
+let lastCheck = 0
 pir.fetchInterval((err, data) => {
   if (err) {
     console.error('An error occured!')
     console.error(err.cause)
     return
   }
+  if (data.value === 1) {
+    if (lastCheck === 1){
+      camera.start()
+    }
+    console.log(data)
+  }else {
+    console.log(data)
+  }
+  lastCheck = data.value
 
-  console.log(data)
-  camera.start()
 }, 1)
