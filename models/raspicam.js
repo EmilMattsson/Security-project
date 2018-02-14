@@ -4,6 +4,11 @@ const RaspiCam = require('raspicam');
 const Sensor = require('pi-pir-sensor');
 const gpio = require('rpi-gpio')
 var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
+let onSetup = function(error) {
+  if (error) console.error(error) {
+    return setInterval(readInterval, pir.loopTime)
+   }
+ }
 gpio.setMode(gpio.MODE_RPI)
 gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 let readInterval = function() { gpio.read(pir.pin, function(error, value) {
