@@ -16,7 +16,13 @@ let mailOptions = {
   from: 'eesecsys@gmail.com',
   to: 'emil.emanuel@hotmail.com',
   subject: 'security breach!',
-  text: 'hej'
+  text: 'hej',
+  attachments: [
+            {
+                filename: 'test0.jpg',
+                path: '/home/emil/Security-project/test0.jpg'
+            }
+        ]
 }
 
 var counter = 0;
@@ -48,10 +54,12 @@ pir.fetchInterval((err, data) => {
     if (lastCheck === 0){
       camera.start()
       console.log('taking pic!')
-      transporter.sendMail(mailOptions, function(err, info) {
+      setTimeout(function(){
+        transporter.sendMail(mailOptions, function(err, info) {
         if (err) console.error('Error! ' + err)
         else console.log('Email sent: ' + info.response)
-      })
+      })}, 10000);
+
     }
     console.log(data)
   }else {
