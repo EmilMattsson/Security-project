@@ -5,8 +5,8 @@ const RaspiSensors = require('raspi-sensors')
 var counter = 0;
 var camera;
 camera = new RaspiCam({
-    mode: 'photo',
-    output: '/home/emil/Security-project/test'+counter+'.jpg',
+    mode: 'timelapse',
+    output: '/home/emil/Security-project/test%d.jpg',
     vf: true,
     // exposure: 'night',
     w: 1920,
