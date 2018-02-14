@@ -1,8 +1,8 @@
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const expHbs = require('express-handlebars')
+let express = require('express')
+let bodyParser = require('body-parser')
+let expHbs = require('express-handlebars')
 let path = require('path')
 
 let app = express()
@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(path.join(__dirname, '/')))
 
 // Load routes as "mini-apps"
-app.use('/home', require('./routes/images.js'))
+app.use('/home', require('./routes/home.js'))
 
 // Error handling
 app.use((req, res, next) => {

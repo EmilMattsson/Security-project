@@ -6,3 +6,5 @@ router.route('/')
   .get((req, res) => {
     res.render('home/index')
   })
+
+module.exports = router
