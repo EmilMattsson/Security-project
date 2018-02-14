@@ -11,7 +11,8 @@ camera = new RaspiCam({
     // exposure: 'night',
     w: 1920,
     h: 1080,
-    tl: 500
+    tl: 500,
+    timeout: 10
 })
 
 let pir = new RaspiSensors.Sensor({
@@ -28,9 +29,6 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 1){
       camera.start()
-      counter = counter + 1;
-      camera.output = '/home/emil/Security-project/test'+counter+'.jpg';
-      console.log(counter+camera.output);
     }
     console.log(data)
   }else {
