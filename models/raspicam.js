@@ -19,7 +19,7 @@ let mailOptions = {
   text: 'hej',
   attachments: [
             {
-                filename: 'test0.jpg',
+                filename: 'test.jpg',
                 path: '/home/emil/Security-project/test0.jpg'
             },
             {
@@ -69,11 +69,12 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 0){
       camera.start()
-      console.log('taking pic!')
+      lastCheck = 1;
       setTimeout(function(){
         transporter.sendMail(mailOptions, function(err, info) {
         if (err) console.error('Error! ' + err)
         else console.log('Email sent: ' + info.response)
+        lastCheck = 0
       })}, 10000);
 
     }
@@ -81,6 +82,5 @@ pir.fetchInterval((err, data) => {
   }else {
     console.log(data)
   }
-  lastCheck = data.value
 
 }, 1)
