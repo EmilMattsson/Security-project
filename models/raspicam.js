@@ -2,6 +2,16 @@
 
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
+const nodemailer = require('nodemailer')
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'eesecsys@gmail.com',
+    pass: 'eeee1234'
+  }
+})
+
 var counter = 0;
 var camera;
 camera = new RaspiCam({
@@ -19,6 +29,7 @@ let pir = new RaspiSensors.Sensor({
   type  : 'PIR',
   pin: 7
 }, "pir-sensor")
+
 let lastCheck = 0
 pir.fetchInterval((err, data) => {
   if (err) {
@@ -29,6 +40,16 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 1){
       camera.start()
+      let mailOptions = {
+        from: 'eesecsys@gmail.com',
+        to: 'emil.emanuel@hotmail.com',
+        subject: 'security breach!',
+        text: 'hej'
+      }
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) console.error(err)
+        else console.log('Email sent: ' + info.response)
+      })
     }
     console.log(data)
   }else {
