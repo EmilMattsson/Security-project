@@ -15,14 +15,14 @@ let transporter = nodemailer.createTransport({
 var counter = 0;
 var camera;
 camera = new RaspiCam({
-    mode: 'timelapse',
-    output: ('/home/emil/Security-project/test%d.jpg', counter++),
-    vf: true,
-    // exposure: 'night',
-    w: 1920,
-    h: 1080,
-    tl: 500,
-    timeout: 10000
+  mode: 'timelapse',
+  output: ('/home/emil/Security-project/test%d.jpg'),
+  vf: true,
+  // exposure: 'night',
+  w: 1920,
+  h: 1080,
+  tl: 500,
+  timeout: 10000
 })
 
 let pir = new RaspiSensors.Sensor({
