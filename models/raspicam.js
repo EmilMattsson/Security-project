@@ -1,30 +1,7 @@
 'use strict';
 
 const RaspiCam = require('raspicam');
-const Sensor = require('pi-pir-sensor');
-const gpio = require('rpi-gpio')
-const pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
-
-let readInterval = function() { gpio.read(pir.pin, function(error, value) {
-    // we only want to move on if something changed
-     if (value === pir.tripped) {
-       return pir.tripped = value
-     }
-      if (pir.tripped){
-          console.log('tripped!')
-      } else {
-        console.log(pir.tripped)
-        console.log("it's quiet... a little TOO quiet..." + value)
-      }
-  })
-}
-let onSetup = function(error) {
-  if (error) console.error(error) {
-    return setInterval(readInterval, pir.loopTime)
-  }
-}
-gpio.setMode(gpio.MODE_RPI)
-gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
+const RaspiSensors = require('raspi-sensors')
 
 let camera
 camera = new RaspiCam({
@@ -35,9 +12,19 @@ camera = new RaspiCam({
     w: 1920,
     h: 1080
 })
-//camera.start()
 
-var sensor = new Sensor({
-    pin: 7,
-    loop: 1500
-})
+let pir = new RaspiSensors.Sensor({
+  type  : 'PIR',
+  pin: 7
+}, "pir-sensor")
+
+pir.fetchInterval((err, data) => {
+  if (err) {
+    console.error('An error occured!')
+    console.error(err.cause)
+    return
+  }
+
+  console.log(data)
+  camera.start()
+}, 1)
