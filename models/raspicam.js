@@ -3,7 +3,7 @@
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
 
-let camera
+var camera;
 camera = new RaspiCam({
     mode: 'photo',
     output: '/home/emil/Security-project/test.jpg',
