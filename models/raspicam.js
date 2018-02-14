@@ -47,8 +47,8 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 1){
       camera.start()
-
-      transporter.sendMail(mailOptions, (err, info) => {
+      console.log('taking pic!')
+      transporter.sendMail(mailOptions, function(err, info) {
         if (err) console.error('Error! ' + err)
         else console.log('Email sent: ' + info.response)
       })
