@@ -24,10 +24,7 @@ let readInterval = function() { gpio.read(pir.pin, function(error, value) {
       }
   })
 }
-let onSetup = function(error) {
-  if (error) console.error(error) {
-    return setInterval(readInterval, pir.loopTime)
-   }
+
 
 var camera;
 camera = new RaspiCam({
