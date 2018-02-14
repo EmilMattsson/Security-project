@@ -12,6 +12,13 @@ let transporter = nodemailer.createTransport({
   }
 })
 
+let mailOptions = {
+  from: 'eesecsys@gmail.com',
+  to: 'emil.emanuel@hotmail.com',
+  subject: 'security breach!',
+  text: 'hej'
+}
+
 var counter = 0;
 var camera;
 camera = new RaspiCam({
@@ -40,14 +47,9 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 1){
       camera.start()
-      let mailOptions = {
-        from: 'eesecsys@gmail.com',
-        to: 'emil.emanuel@hotmail.com',
-        subject: 'security breach!',
-        text: 'hej'
-      }
+
       transporter.sendMail(mailOptions, (err, info) => {
-        if (err) console.error(err)
+        if (err) console.error('Error! ' + err)
         else console.log('Email sent: ' + info.response)
       })
     }
