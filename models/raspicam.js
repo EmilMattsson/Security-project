@@ -12,7 +12,7 @@ camera = new RaspiCam({
     w: 1920,
     h: 1080,
     tl: 500,
-    timeout: 10
+    timeout: 10000
 })
 
 let pir = new RaspiSensors.Sensor({
