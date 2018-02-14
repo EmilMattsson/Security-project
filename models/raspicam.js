@@ -6,7 +6,7 @@ var counter = 0;
 var camera;
 camera = new RaspiCam({
     mode: 'timelapse',
-    output: '/home/emil/Security-project/test%d.jpg',
+    output: ('/home/emil/Security-project/test%d.jpg', counter++),
     vf: true,
     // exposure: 'night',
     w: 1920,
