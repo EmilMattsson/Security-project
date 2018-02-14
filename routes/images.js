@@ -4,5 +4,7 @@ let router = require('express').Router()
 
 router.route('/')
   .get((req, res) => {
-    res.render()
+    res.render('images/images')
   })
+
+module.exports = router

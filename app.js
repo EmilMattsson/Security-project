@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, '/')))
 
 // Load routes as "mini-apps"
 app.use('/home', require('./routes/home.js'))
+app.use('/images', require('./routes/images.js'))
 
 // Error handling
 app.use((req, res, next) => {
