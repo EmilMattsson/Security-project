@@ -28,8 +28,8 @@ camera = new RaspiCam({
   // exposure: 'night',
   w: 1920,
   h: 1080,
-  tl: 500,
-  timeout: 10000
+  tl: 1000,
+  timeout: 5000
 })
 
 let pir = new RaspiSensors.Sensor({
@@ -45,7 +45,7 @@ pir.fetchInterval((err, data) => {
     return
   }
   if (data.value === 1) {
-    if (lastCheck === 1){
+    if (lastCheck === 0){
       camera.start()
       console.log('taking pic!')
       transporter.sendMail(mailOptions, function(err, info) {
