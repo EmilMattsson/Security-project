@@ -29,6 +29,7 @@ pir.fetchInterval((err, data) => {
       camera.start()
       counter = counter + 1;
       camera.output = '/home/emil/Security-project/test'+counter+'.jpg';
+      console.log(counter+camera.output);
     }
     console.log(data)
   }else {
