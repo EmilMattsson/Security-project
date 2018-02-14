@@ -6,6 +6,8 @@ var Sensor = require('pi-pir-sensor');
 //const pir = require('pir').use(7);
 var gpio = require('rpi-gpio')
 var pir = { pin: 7, loopTime: 1500, tripped: false, value: undefined }
+gpio.setMode(gpio.MODE_RPI)
+gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
 var readInterval = function() { gpio.read(pir.pin, function(error, value) {
     // we only want to move on if something changed
      if (value === pir.tripped) {
@@ -23,8 +25,7 @@ var readInterval = function() { gpio.read(pir.pin, function(error, value) {
     if (error) console.error(error)
     return setInterval(readInterval, pir.loopTime)
    }
-  gpio.setMode(gpio.MODE_RPI)
-  gpio.setup(pir.pin, gpio.DIR_IN, onSetup)
+
 var camera;
 camera = new RaspiCam({
     mode: 'photo',
