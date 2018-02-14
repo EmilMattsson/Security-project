@@ -10,7 +10,8 @@ camera = new RaspiCam({
     vf: true,
     // exposure: 'night',
     w: 1920,
-    h: 1080
+    h: 1080,
+    tl: 500
 })
 
 let pir = new RaspiSensors.Sensor({
