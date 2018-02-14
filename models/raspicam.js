@@ -2,11 +2,11 @@
 
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
-
+var counter = 0;
 var camera;
 camera = new RaspiCam({
     mode: 'photo',
-    output: '/home/emil/Security-project/test.jpg',
+    output: '/home/emil/Security-project/test'+counter+'.jpg',
     vf: true,
     // exposure: 'night',
     w: 1920,
@@ -27,6 +27,8 @@ pir.fetchInterval((err, data) => {
   if (data.value === 1) {
     if (lastCheck === 1){
       camera.start()
+      counter = counter + 1;
+      camera.output = '/home/emil/Security-project/test'+counter+'.jpg';
     }
     console.log(data)
   }else {
