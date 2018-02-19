@@ -3,10 +3,11 @@
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
 const nodemailer = require('nodemailer')
-//let Image = require('./models/Image')
+let path = require('path')
+let Image = require('../models/Image')
 
 // Initilize the database asap
-require('./libs/dbHelper').initilize()
+require('../libs/dbHelper').initilize()
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
