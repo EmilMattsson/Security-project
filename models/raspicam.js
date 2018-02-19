@@ -6,10 +6,10 @@ const nodemailer = require('nodemailer')
 let path = require('path')
 console.log(". = %s", path.resolve("."))
 console.log("__dirname = %s", path.resolve(__dirname))
-let Image = require(__dirname + '/Image')
+let Image = require(__dirname + '/Image.js')
 
 // Initilize the database asap
-require(__dirname + '/dbHelper').initilize()
+require(__dirname + '/dbHelper.js').initilize()
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
