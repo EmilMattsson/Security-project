@@ -85,15 +85,18 @@ pir.fetchInterval((err, data) => {
         lastCheck = 0
       })}, 10000);
 
-      for (var i = 0; i < 5; i++) {
-        let image = new Image
-        image.img.data = fs.readFileSync('/home/emil/Security-project/test%d.jpg', i)
-        image.img.contentType = 'image/jpg'
-        image.save((err, res) => {
-          if (err) throw err
-          console.log(err)
-        })
-      }
+      setTimeout(() => {
+        for (var i = 0; i < 5; i++) {
+          let image = new Image
+          image.img.data = fs.readFileSync('/home/emil/Security-project/test%d.jpg', i)
+          image.img.contentType = 'image/jpg'
+          image.save((err, res) => {
+            if (err) throw err
+            console.log(err)
+          })
+        }
+      }, 15000)
+
 
     }
     console.log(data)
