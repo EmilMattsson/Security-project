@@ -3,6 +3,7 @@
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
 const nodemailer = require('nodemailer')
+console.log('__dirname')
 let Image = require('./models/Image')
 
 // Initilize the database asap
