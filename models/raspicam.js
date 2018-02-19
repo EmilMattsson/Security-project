@@ -9,7 +9,7 @@ console.log("__dirname = %s", path.resolve(__dirname))
 let Image = require(__dirname + '/image.js')
 
 // Initilize the database asap
-require(__dirname + '/dbHelper.js').initilize()
+require(__dirname + '../libs/dbHelper.js').initilize()
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
