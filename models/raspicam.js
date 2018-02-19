@@ -88,7 +88,7 @@ pir.fetchInterval((err, data) => {
       setTimeout(() => {
         for (var i = 0; i < 5; i++) {
           let image = new Image
-          image.img.data = fs.readFileSync('/home/emil/Security-project/test%d.jpg', i)
+          image.img.data = fs.readFileSync('/home/emil/Security-project/test%d.jpg')
           image.img.contentType = 'image/jpg'
           image.save((err, res) => {
             if (err) throw err
