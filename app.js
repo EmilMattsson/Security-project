@@ -7,8 +7,8 @@ const fs = require('fs')
 // let path = require('path')
 // console.log(". = %s", path.resolve("."))
 // console.log("__dirname = %s", path.resolve(__dirname))
-let Image = require('./models/image')
-let mailConfig = require('./config/mail')
+let Image = require('./models/image.js')
+let mailConfig = require('./config/mail.js')
 
 // Initilize the database asap
 require('./libs/dbHelper.js').initilize()

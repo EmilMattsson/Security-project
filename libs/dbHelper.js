@@ -1,7 +1,7 @@
 'use strict'
 
 let mongoose = require('mongoose')
-let dbConfig = require('./config/database')
+let dbConfig = require('./config/database.js')
 module.exports = {
   initilize: function () {
     let db = mongoose.connection
