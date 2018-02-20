@@ -4,27 +4,28 @@ const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
 const nodemailer = require('nodemailer')
 const fs = require('fs')
-let path = require('path')
-console.log(". = %s", path.resolve("."))
-console.log("__dirname = %s", path.resolve(__dirname))
+// let path = require('path')
+// console.log(". = %s", path.resolve("."))
+// console.log("__dirname = %s", path.resolve(__dirname))
 let Image = require('./models/image.js')
+let mail = require('./config/mail')
 
 // Initilize the database asap
 require('./libs/dbHelper.js').initilize()
 
 let transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: mail.service,
   auth: {
-    user: 'eesecsys@gmail.com',
-    pass: 'eeee1234'
+    user: mail.auth.user,
+    pass: mail.auth.pass
   }
 })
 
 let mailOptions = {
-  from: 'eesecsys@gmail.com',
-  to: 'emil.emanuel@hotmail.com',
-  subject: 'security breach!',
-  text: 'hej',
+  from: mail.auth.user,
+  to: mail.receiver,
+  subject: 'Security breach!',
+  text: '',
   attachments: [
             {
                 filename: 'test.jpg',
