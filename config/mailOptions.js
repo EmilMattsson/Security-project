@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = {
-  from: mailConfig.auth.user,
-  to: mailConfig.receiver,
+  from: 'eesecsys@gmail.com',
+  to: 'emil.emanuel@hotmail.com',
   subject: 'Security breach!',
   text: '',
   attachments: [
