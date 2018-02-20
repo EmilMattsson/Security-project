@@ -7,10 +7,10 @@ const fs = require('fs')
 let path = require('path')
 console.log(". = %s", path.resolve("."))
 console.log("__dirname = %s", path.resolve(__dirname))
-let Image = require(__dirname + '/models/image.js')
+let Image = require('./models/image.js')
 
 // Initilize the database asap
-require('/home/emil/Security-project/libs/dbHelper.js').initilize()
+require('./libs/dbHelper.js').initilize()
 
 let transporter = nodemailer.createTransport({
   service: 'gmail',
