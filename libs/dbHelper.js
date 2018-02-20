@@ -1,6 +1,7 @@
 'use strict'
 
 let mongoose = require('mongoose')
+let dbConfig = require('./config/database')
 module.exports = {
   initilize: function () {
     let db = mongoose.connection
@@ -20,6 +21,6 @@ module.exports = {
       })
     })
 
-    mongoose.connect('mongodb://emil:e123@ds133017.mlab.com:33017/security-images')
+    mongoose.connect(dbConfig.connectionString)
   }
 }

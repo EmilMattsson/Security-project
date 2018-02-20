@@ -7,23 +7,23 @@ const fs = require('fs')
 // let path = require('path')
 // console.log(". = %s", path.resolve("."))
 // console.log("__dirname = %s", path.resolve(__dirname))
-let Image = require('./models/image.js')
-let mail = require('./config/mail')
+let Image = require('./models/image')
+let mailConfig = require('./config/mail')
 
 // Initilize the database asap
 require('./libs/dbHelper.js').initilize()
 
 let transporter = nodemailer.createTransport({
-  service: mail.service,
+  service: mailConfig.service,
   auth: {
-    user: mail.auth.user,
-    pass: mail.auth.pass
+    user: mailConfig.auth.user,
+    pass: mailConfig.auth.pass
   }
 })
 
 let mailOptions = {
-  from: mail.auth.user,
-  to: mail.receiver,
+  from: mailConfig.auth.user,
+  to: mailConfig.receiver,
   subject: 'Security breach!',
   text: '',
   attachments: [
