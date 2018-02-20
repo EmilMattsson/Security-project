@@ -13,6 +13,7 @@ let mailConfig = require('./config/mail')
 // Initilize the database asap
 require('./libs/dbHelper.js').initilize()
 
+// Mail configure for sender
 let transporter = nodemailer.createTransport({
   service: mailConfig.service,
   auth: {
@@ -21,6 +22,7 @@ let transporter = nodemailer.createTransport({
   }
 })
 
+// Mail configure for the mail to be sent
 let mailOptions = {
   from: mailConfig.auth.user,
   to: mailConfig.receiver,
@@ -52,6 +54,8 @@ let mailOptions = {
 
 var counter = 0;
 var camera;
+
+// Create camera object
 camera = new RaspiCam({
   mode: 'timelapse',
   output: ('/home/emil/Security-project/test%d.jpg'),
@@ -63,11 +67,13 @@ camera = new RaspiCam({
   timeout: 5000
 })
 
+// Create a pir sensor object
 let pir = new RaspiSensors.Sensor({
   type  : 'PIR',
   pin: 7
 }, "pir-sensor")
 
+// Read the data from pir sensor every second
 let lastCheck = 0
 pir.fetchInterval((err, data) => {
   if (err) {
@@ -79,6 +85,8 @@ pir.fetchInterval((err, data) => {
     if (lastCheck === 0){
       camera.start()
       lastCheck = 1;
+
+      // Wait 10 seconds before sending an email with images recently taken
       setTimeout(function(){
         transporter.sendMail(mailOptions, function(err, info) {
         if (err) console.error('Error! ' + err)
@@ -86,6 +94,7 @@ pir.fetchInterval((err, data) => {
         lastCheck = 0
       })}, 10000);
 
+      // Wait 15 seconds before uploading images to mongoDB
       setTimeout(() => {
         for (var i = 0; i < 5; i++) {
           let image = new Image
