@@ -1,5 +1,6 @@
 "use strict"
 
+// Configuation for e-mail
 module.exports = {
   from: 'eesecsys@gmail.com',
   to: 'emil.emanuel@hotmail.com',

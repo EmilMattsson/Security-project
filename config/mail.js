@@ -1,5 +1,6 @@
 'use strict'
 
+// Authentification for e-mail
 module.exports = {
   service: 'gmail',
   auth: {
