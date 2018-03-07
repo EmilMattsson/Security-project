@@ -1,7 +1,9 @@
 'use strict'
 
+// Module for connecting to database and creating database models
 let mongoose = require('mongoose')
 let dbConfig = require('../config/database')
+
 module.exports = {
   initilize: function () {
     let db = mongoose.connection

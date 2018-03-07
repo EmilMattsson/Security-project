@@ -1,12 +1,16 @@
 'use strict';
 
+// API for camera, PIR-sensor and e-mail
 const RaspiCam = require('raspicam');
 const RaspiSensors = require('raspi-sensors')
 const nodemailer = require('nodemailer')
+
 const fs = require('fs')
 // let path = require('path')
 // console.log(". = %s", path.resolve("."))
 // console.log("__dirname = %s", path.resolve(__dirname))
+
+// Image model for uploading pictures to database
 let Image = require('./models/image')
 let mailConfig = require('./config/mail')
 
